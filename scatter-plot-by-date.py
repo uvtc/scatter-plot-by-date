@@ -57,7 +57,7 @@ def main():
     # print("Vals:", ys)
 
     fig, ax = plt.subplots()
-    ax.plot(xs, ys)
+    ax.plot(xs, ys, "go-")
     ax.set(xlabel=x_axis_label, ylabel=y_axis_label, title=plot_title)
     ax.grid()
     fig.autofmt_xdate()
