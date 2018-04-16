@@ -52,11 +52,6 @@ def main():
     xs = [dt_date(row[0]) for row in rows]
     ys = [float(row[1]) for row in rows]
 
-    print("Dates:")
-    for d in xs:
-        print(d)
-    print("Vals:", ys)
-
     fig, ax = plt.subplots()
     ax.plot(xs, ys, color='tab:blue', marker="o")
     ax.set(xlabel=x_axis_label, ylabel=y_axis_label, title=plot_title)
