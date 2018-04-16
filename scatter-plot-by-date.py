@@ -3,7 +3,7 @@
 import sys, csv
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-import time, datetime
+import datetime as dt
 
 version = '1.0'
 
@@ -49,7 +49,7 @@ def main():
     rows = rows[1:]
     rows.sort(key=lambda r: r[0])
 
-    xs = [dt_date(row[0]) for row in rows]
+    xs = [dt.datetime.strptime(row[0], '%Y-%m-%d') for row in rows]
     ys = [float(row[1]) for row in rows]
 
     fig, ax = plt.subplots()
@@ -59,13 +59,6 @@ def main():
     fig.autofmt_xdate()
 
     plt.show()
-
-
-# `d` is a string like '2018-04-16'. Returns a datetime.date.
-def dt_date(d):
-    tt = time.strptime(d, '%Y-%m-%d')
-    et = time.mktime(tt)
-    return datetime.date.fromtimestamp(et)
 
 
 def handle_args():
