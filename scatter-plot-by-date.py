@@ -47,14 +47,15 @@ def main():
     x_axis_label = rows[0][0]
     y_axis_label = rows[0][1]
     rows = rows[1:]
+    rows.sort(key=lambda r: r[0])
 
     xs = [dt_date(row[0]) for row in rows]
     ys = [float(row[1]) for row in rows]
 
-    # print("Dates:")
-    # for d in xs:
-    #     print(d)
-    # print("Vals:", ys)
+    print("Dates:")
+    for d in xs:
+        print(d)
+    print("Vals:", ys)
 
     fig, ax = plt.subplots()
     ax.plot(xs, ys, color='tab:blue', marker="o")
