@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
-import sys
+import sys, csv
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import time, datetime
 
 version = '1.0'
 
@@ -21,7 +24,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
-help_msg = f"""Usage:
+help_msg = """Usage:
 
     scatter-plot-by-date.py 'My Plot Title' input.csv
     scatter-plot-by-date.py --license
@@ -38,9 +41,35 @@ Exiting.
 def main():
     handle_args()
 
-    title   = sys.argv[1]
+    plot_title = sys.argv[1]
     csv_fnm = sys.argv[2]
+    rows = read_csv(csv_fnm)
+    x_axis_label = rows[0][0]
+    y_axis_label = rows[0][1]
+    rows = rows[1:]
 
+    xs = [the_date(row[0]) for row in rows]
+    ys = [float(row[1]) for row in rows]
+
+    # print("Dates:")
+    # for d in xs:
+    #     print(d)
+    # print("Vals:", ys)
+
+    fig, ax = plt.subplots()
+    ax.plot(xs, ys)
+    ax.set(xlabel=x_axis_label, ylabel=y_axis_label, title=plot_title)
+    ax.grid()
+    fig.autofmt_xdate()
+    
+    plt.show()
+
+# `d` is a string like '2018-04-16'
+# Returns a datetime.date.
+def the_date(d):
+    tt = time.strptime(d, '%Y-%m-%d')
+    et = time.mktime(tt)
+    return datetime.date.fromtimestamp(et)
 
 def handle_args():
     if len(sys.argv) == 1:
@@ -61,6 +90,13 @@ def handle_args():
         sys.exit()
 
 
+def read_csv(fnm):
+    rows = []
+    with open(fnm, newline='') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            rows.append(row)
+    return rows
 
 #=================================
 main()

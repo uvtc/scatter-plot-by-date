@@ -11,8 +11,8 @@ Prerequisites
 =============
 
 You'll need to have Python v3 installed, plus the matplotlib library.
-To install matplotlib, use your OS's package manager. On Debian, that
-would be:
+To install matplotlib, use your OS's package manager; on Debian,
+that's:
 
     apt install python3-matplotlib
 
@@ -21,8 +21,8 @@ would be:
 CSV Input File
 ==============
 
-X-axis/date data goes in the first column (and must be formatted like
-YYYY-MM-DD). Y-axis data in the second column. The titles for the
+X-axis (date) data goes in the first column (and must be formatted
+like YYYY-MM-DD). Y-axis data in the second column. The titles for the
 plot's axes will come from the first row of the csv.  Example:
 
 ~~~
@@ -48,4 +48,5 @@ Run it like so:
     scatter-plot-by-date.py 'My Plot Title' input.csv
 
 This will cause a window to pop up containing your plot. You'll
-usually then click click the disk icon to save your plot to a file.
+usually then click the nostalgic floppy disk icon to save your plot to
+a file.
