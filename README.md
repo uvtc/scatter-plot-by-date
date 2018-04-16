@@ -23,7 +23,9 @@ CSV Input File
 
 X-axis (date) data goes in the first column (and must be formatted
 like YYYY-MM-DD). Y-axis data in the second column. The titles for the
-plot's axes will come from the first row of the csv.  Example:
+plot's axes will come from the first row of the csv.
+
+For example:
 
 ~~~
 Date,Height (cm)
@@ -36,7 +38,7 @@ Date,Height (cm)
 
 would produce:
 
-![](./example.png)
+![Example Plot](./example.png)
 
 
 

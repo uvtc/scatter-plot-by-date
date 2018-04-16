@@ -48,7 +48,7 @@ def main():
     y_axis_label = rows[0][1]
     rows = rows[1:]
 
-    xs = [the_date(row[0]) for row in rows]
+    xs = [dt_date(row[0]) for row in rows]
     ys = [float(row[1]) for row in rows]
 
     # print("Dates:")
@@ -61,15 +61,16 @@ def main():
     ax.set(xlabel=x_axis_label, ylabel=y_axis_label, title=plot_title)
     ax.grid()
     fig.autofmt_xdate()
-    
+
     plt.show()
 
-# `d` is a string like '2018-04-16'
-# Returns a datetime.date.
-def the_date(d):
+
+# `d` is a string like '2018-04-16'. Returns a datetime.date.
+def dt_date(d):
     tt = time.strptime(d, '%Y-%m-%d')
     et = time.mktime(tt)
     return datetime.date.fromtimestamp(et)
+
 
 def handle_args():
     if len(sys.argv) == 1:
@@ -97,6 +98,7 @@ def read_csv(fnm):
         for row in reader:
             rows.append(row)
     return rows
+
 
 #=================================
 main()
